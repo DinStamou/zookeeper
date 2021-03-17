@@ -1,0 +1,43 @@
+---
+# Installation variables
+zookeeper_version: 3.5.9
+zookeeper_mirror: https://www-eu.apache.org/dist/zookeeper
+zookeeper_package: apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz
+zookeeper_create_user_group: true
+zookeeper_group: zk
+zookeeper_user: zk
+zookeeper_root_dir: /opt
+zookeeper_install_dir: '{{ zookeeper_root_dir }}/apache-zookeeper-{{ zookeeper_version }}'
+zookeeper_dir: '{{ zookeeper_root_dir }}/zookeeper'
+zookeeper_log_dir: /var/log/zookeeper
+zookeeper_start: no
+zookeeper_restart: yes
+zookeeper_unit_path: /lib/systemd/system/zookeeper.service
+
+# Configuration variables
+zookeeper_ticktime: 2000
+zookeeper_data_dir: /data/zookeeper
+zookeeper_data_log_dir: /data/zookeeper
+zookeeper_client_port: 2181
+zookeeper_max_client_cnxns: 60
+
+# Uniquely identifies the ZooKeeper instance when clustering ZooKeeper nodes.
+# This value is placed in the /var/lib/zookeeper/myid file.
+zookeeper_id: 1
+zookeeper_leader_port: 2888
+zookeeper_election_port: 3888
+zookeeper_servers: "{{ groups['zookeeper-nodes'] }}"
+zookeeper_environment: {}
+zookeeper_init_limit: 10
+zookeeper_sync_limit: 5
+
+# Set to "false" to disable the AdminServer. By default the AdminServer is enabled.
+zookeeper_enable_server: no
+# The address the embedded Jetty server listens on. Defaults to 0.0.0.0.
+zookeeper_server_address: 0.0.0.0
+# The port the embedded Jetty server listens on. Defaults to 8080.
+zookeeper_server_port: 8080 
+# Set the maximum idle time in milliseconds that a connection can wait before sending or receiving data. Defaults to 30000 ms.
+zookeeper_idle_timeout: 30000
+# The URL for listing and issuing commands relative to the root URL. Defaults to "/commands".
+zookeeper_command_url: /commands

@@ -1,0 +1,4 @@
+[zookeeper-nodes]
+zookeeper1 ansible_port=22 ansible_host= ansible_user=root zookeeper_id=1
+zookeeper2 ansible_port=22 ansible_host= ansible_user=root zookeeper_id=2
+zookeeper3 ansible_port=22 ansible_host= ansible_user=root zookeeper_id=3

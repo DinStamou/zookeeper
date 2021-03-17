@@ -1,0 +1,19 @@
+---
+- name: Install Packages
+  apt:
+    pkg:
+    - mlocate
+    - vim
+    - bash-completion
+    - screenfetch
+    - default-jre
+    - openjdk-11-jre-headless
+    - openjdk-8-jre-headless
+    state: present
+
+- name: Reset timezone
+  timezone: name=UTC
+
+- name: Run locate
+  command: updatedb
+  when: True
